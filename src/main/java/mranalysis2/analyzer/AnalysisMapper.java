@@ -16,9 +16,10 @@ import cs.vt.analysis.analyzer.parser.ParsingException;
 
 public class AnalysisMapper extends Mapper<Object, Text, LongWritable, Text> {
 
-	static enum ErrorCounter {
+	public static enum ErrorCounter {
 		MISMATCHED_PROJECT_ID, ANALYSIS_FAILURE, PARSING_FAILURE
 	};
+	
 
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 
