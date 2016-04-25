@@ -15,14 +15,14 @@ import cs.vt.analysis.analyzer.parser.ParsingException;
 //ref:http://appsintheopen.com/posts/40-unit-testing-map-reduce-programs-with-mrunit
 
 public class AnalysisMapper extends Mapper<Object, Text, LongWritable, Text> {
-
+	
 	public static enum ErrorCounter {
 		MISMATCHED_PROJECT_ID, ANALYSIS_FAILURE, PARSING_FAILURE
 	};
 	
 
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-
+		
 		AnalysisManager blockAnalyzer = new AnalysisManager();
 		JSONObject report = null;
 		LongWritable projectID = null;
