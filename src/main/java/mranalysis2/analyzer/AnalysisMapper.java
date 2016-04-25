@@ -32,6 +32,13 @@ public class AnalysisMapper extends Mapper<Object, Text, LongWritable, Text> {
 			projectID = new LongWritable((Long) record.get("_id"));
 			String src = record.get("src").toString();
 			report = blockAnalyzer.analyze(src);
+			
+			if (blockAnalyzer.getProjectID() != projectID.get()) {
+				context.getCounter(ErrorCounter.MISMATCHED_PROJECT_ID).increment(1);
+			} else if(report!=null) {
+				Text result = new Text(report.toJSONString());
+				context.write(projectID, result);
+			}
 		} catch (ParsingException e) {
 			context.getCounter(ErrorCounter.PARSING_FAILURE).increment(1);
 			e.printStackTrace();
@@ -42,11 +49,5 @@ public class AnalysisMapper extends Mapper<Object, Text, LongWritable, Text> {
 			e.printStackTrace();
 		}
 
-		if (blockAnalyzer.getProjectID() != projectID.get()) {
-			context.getCounter(ErrorCounter.MISMATCHED_PROJECT_ID).increment(1);
-		} else if(report!=null) {
-			Text result = new Text(report.toJSONString());
-			context.write(projectID, result);
-		}
 	}
 }
