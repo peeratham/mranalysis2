@@ -29,7 +29,7 @@ public class Analysis extends Configured implements Tool {
 		// Setup MapReduce
 		job.setMapperClass(AnalysisMapper.class);
 		// job.setReducerClass(WordCountReducer.class);
-		// job.setNumReduceTasks(1);
+		 job.setNumReduceTasks(0);
 
 		// Specify key / value
 		job.setOutputKeyClass(LongWritable.class);
