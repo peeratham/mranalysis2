@@ -1,4 +1,4 @@
-package mranalysis2.analyzer;
+package vt.cs.analyzer.mapred;
 
 import static org.junit.Assert.*;
 
@@ -15,15 +15,16 @@ import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
-import cs.vt.analysis.analyzer.AnalysisManager;
-import cs.vt.analysis.analyzer.Main;
-import cs.vt.analysis.analyzer.analysis.AnalysisException;
-import cs.vt.analysis.analyzer.parser.ParsingException;
-import cs.vt.analysis.analyzer.parser.Util;
-import mranalysis2.analyzer.AnalysisMapper.ErrorCounter;
+import vt.cs.analyzer.mapred.AnalysisMapper;
+import vt.cs.analyzer.mapred.AnalysisMapper.ErrorCounter;
+import vt.cs.smells.analyzer.AnalysisException;
+import vt.cs.smells.analyzer.AnalysisManager;
+import vt.cs.smells.analyzer.Main;
+import vt.cs.smells.analyzer.parser.ParsingException;
+import vt.cs.smells.analyzer.parser.Util;
 
 
-public class AnalysisMapperTest {
+public class TestAnalysisMapper {
 	MapDriver<Object, Text, LongWritable, Text> mapDriver;
 	private String[] lines;
 	private AnalysisManager blockAnalyzer;

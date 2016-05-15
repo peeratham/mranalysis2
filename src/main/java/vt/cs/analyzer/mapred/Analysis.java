@@ -1,4 +1,4 @@
-package mranalysis2.analyzer;
+package vt.cs.analyzer.mapred;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;

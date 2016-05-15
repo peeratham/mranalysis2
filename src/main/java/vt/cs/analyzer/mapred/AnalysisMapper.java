@@ -1,4 +1,4 @@
-package mranalysis2.analyzer;
+package vt.cs.analyzer.mapred;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import cs.vt.analysis.analyzer.AnalysisManager;
-import cs.vt.analysis.analyzer.analysis.AnalysisException;
-import cs.vt.analysis.analyzer.parser.ParsingException;
+import vt.cs.smells.analyzer.AnalysisException;
+import vt.cs.smells.analyzer.AnalysisManager;
+import vt.cs.smells.analyzer.parser.ParsingException;
 
 //ref:http://appsintheopen.com/posts/40-unit-testing-map-reduce-programs-with-mrunit
 
