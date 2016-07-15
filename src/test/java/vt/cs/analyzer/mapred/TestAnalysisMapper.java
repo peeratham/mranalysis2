@@ -1,6 +1,6 @@
 package vt.cs.analyzer.mapred;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +15,6 @@ import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
-import vt.cs.analyzer.mapred.AnalysisMapper;
 import vt.cs.analyzer.mapred.AnalysisMapper.ErrorCounter;
 import vt.cs.smells.analyzer.AnalysisException;
 import vt.cs.smells.analyzer.AnalysisManager;
@@ -53,7 +52,9 @@ public class TestAnalysisMapper {
 		JSONObject record = (JSONObject) jsonParser.parse(value.toString());
 		LongWritable projectID = new LongWritable( (Long) record.get("_id"));
 //		String src = record.get("src").toString();
-        JSONObject report = blockAnalyzer.analyze(src);
+//        JSONObject report = blockAnalyzer.analyze(src);
+        blockAnalyzer.analyze(src);
+        JSONObject report = blockAnalyzer.getConciseJSONReports();
         
         mapDriver.withInput(new LongWritable(), value)
                 .withOutput(projectID, new Text(report.toJSONString())) 
@@ -70,7 +71,8 @@ public class TestAnalysisMapper {
 		JSONObject record = (JSONObject) jsonParser.parse(value.toString());
 		LongWritable projectID = new LongWritable( (Long) record.get("_id"));
 		String src = record.get("src").toString();
-        JSONObject report = blockAnalyzer.analyze(src);
+		blockAnalyzer.analyze(src);
+        JSONObject report = blockAnalyzer.getConciseJSONReports();
         
         mapDriver.withInput(new LongWritable(), value)
                 .runTest();

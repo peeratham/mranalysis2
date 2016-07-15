@@ -31,7 +31,8 @@ public class AnalysisMapper extends Mapper<Object, Text, LongWritable, Text> {
 			JSONObject record = (JSONObject) new JSONParser().parse(value.toString());
 			projectID = new LongWritable((Long) record.get("_id"));
 			String src = record.get("src").toString();
-			report = blockAnalyzer.analyze(src);
+			blockAnalyzer.analyze(src);
+			report = blockAnalyzer.getConciseJSONReports();
 			
 			if (blockAnalyzer.getProjectID() != projectID.get()) {
 				context.getCounter(ErrorCounter.MISMATCHED_PROJECT_ID).increment(1);

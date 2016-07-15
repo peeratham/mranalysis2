@@ -55,7 +55,7 @@
 					</descriptors>
 					<archive>
 						<manifest>
-							<mainClass>mranalysis2.analyzer.Analysis</mainClass>
+							<mainClass>vt.cs.analyzer.mapred.Analysis</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
