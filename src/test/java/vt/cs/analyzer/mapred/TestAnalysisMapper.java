@@ -81,4 +81,35 @@ public class TestAnalysisMapper {
                 .findCounter(ErrorCounter.MISMATCHED_PROJECT_ID).getValue());
     }
     
+    @Test
+    public void testUndefinedBlockCount() throws ParseException, ParsingException, AnalysisException, IOException{
+    	int id = 10537166;
+		String src = Util.retrieveProjectOnline(id);
+    	JSONObject line = new JSONObject();
+    	line.put("_id", id);
+    	line.put("src", src);
+    	Text value = new Text(line.toJSONString());
+
+        mapDriver.withInput(new LongWritable(), value) 
+                .runTest();
+        System.out.println(mapDriver.getExpectedOutputs());
+        assertEquals("Expected 1 counter increment", 1, mapDriver.getCounters()
+                .findCounter(ErrorCounter.UNDEFINED_BLOCK).getValue());
+    }
+    
+    @Test
+    public void testProjectIDNotFoundCounter() throws IOException, ParseException{
+    	int id = 116502740;
+		String src = Util.retrieveProjectOnline(id);
+    	JSONObject line = new JSONObject();
+    	line.put("_id", id);
+    	line.put("src", src);
+    	Text value = new Text(line.toJSONString());
+
+		
+        mapDriver.withInput(new LongWritable(), value) 
+                .runTest();
+        assertEquals("Expected 1 counter increment", 1, mapDriver.getCounters()
+                .findCounter(ErrorCounter.PROJECT_ID_NOT_FOUND).getValue());
+    }
 }
