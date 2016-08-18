@@ -34,6 +34,7 @@
 			<groupId>vt.cs.smells</groupId>
 			<artifactId>analyzer</artifactId>
 			<version>1.0</version>
+			<classifier>jar-with-dependencies</classifier>
 		</dependency>
 	</dependencies>
 	
