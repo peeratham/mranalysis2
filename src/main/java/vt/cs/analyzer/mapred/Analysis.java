@@ -27,7 +27,7 @@ public class Analysis extends Configured implements Tool {
 		job.setJarByClass(getClass());
 
 		// Setup MapReduce
-		job.setMapperClass(AnalysisMapper.class);
+		job.setMapperClass(NewAnalysisMapper.class);
 		// job.setReducerClass(WordCountReducer.class);
 		 job.setNumReduceTasks(0);
 

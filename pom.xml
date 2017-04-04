@@ -6,7 +6,30 @@
 	<version>1.0</version>
 	<name>mranalysis2</name>
 	<description>mapreduce analysis for blocks</description>
+	
+	<repositories>
+		<repository>
+			<id>in-project</id>
+			<name>In Project Repo</name>
+			<url>file://${project.basedir}/libs</url>
+		</repository>
+	</repositories>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>analyzer</groupId>
+				<artifactId>smellanalyzer</artifactId>
+				<version>1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<dependencies>
+		<dependency>
+			<groupId>analyzer</groupId>
+			<artifactId>smellanalyzer</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.mrunit</groupId>
 			<artifactId>mrunit</artifactId>
@@ -30,14 +53,16 @@
 			<version>2.7.1</version>
 			<scope>provided</scope>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>vt.cs.smells</groupId>
 			<artifactId>analyzer</artifactId>
 			<version>1.0</version>
 			<classifier>jar-with-dependencies</classifier>
 		</dependency>
 	</dependencies>
+
 	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -72,5 +97,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

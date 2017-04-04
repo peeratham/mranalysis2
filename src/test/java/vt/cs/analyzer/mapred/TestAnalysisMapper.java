@@ -47,7 +47,6 @@ public class TestAnalysisMapper {
     	String src = Util.retrieveProjectOnline(104240489);
     	line.put("src", src);
     	Text value = new Text(line.toJSONString());
-
         
 		JSONObject record = (JSONObject) jsonParser.parse(value.toString());
 		LongWritable projectID = new LongWritable( (Long) record.get("_id"));
@@ -73,7 +72,7 @@ public class TestAnalysisMapper {
 		String src = record.get("src").toString();
 		blockAnalyzer.analyze(src);
         JSONObject report = blockAnalyzer.getConciseJSONReports();
-        
+        System.out.println(report.toJSONString());
         mapDriver.withInput(new LongWritable(), value)
                 .runTest();
         
