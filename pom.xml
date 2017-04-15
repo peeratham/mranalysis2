@@ -6,7 +6,7 @@
 	<version>1.0</version>
 	<name>mranalysis2</name>
 	<description>mapreduce analysis for blocks</description>
-	
+
 	<repositories>
 		<repository>
 			<id>in-project</id>
@@ -14,7 +14,7 @@
 			<url>file://${project.basedir}/libs</url>
 		</repository>
 	</repositories>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -24,7 +24,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>analyzer</groupId>
@@ -61,10 +61,19 @@
 		</dependency>
 	</dependencies>
 
-	
+
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.7.1</version>
+				<configuration>
+					<parallel>classes</parallel>
+					<threadCount>5</threadCount>
+				</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>

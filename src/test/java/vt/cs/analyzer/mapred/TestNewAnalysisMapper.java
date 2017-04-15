@@ -37,8 +37,8 @@ public class TestNewAnalysisMapper {
 	@Test
     public void testOutputIDandAnalysisResult() throws Exception {
     	JSONObject line = new JSONObject();
-    	line.put("_id", 104240489);
-    	StringReader srcReader = Util.retrieveProjectOnline(104240489);
+    	line.put("_id", 10247904);
+    	StringReader srcReader = Util.retrieveProjectOnline(10247904);
     	String src = IOUtils.toString(srcReader);
     	JSONObject srcJson = (JSONObject) jsonParser.parse(src);
     	line.put("src", srcJson);
@@ -52,6 +52,7 @@ public class TestNewAnalysisMapper {
 		srcReader = new StringReader(src);
 		Program program = parser.parse(srcReader);
         String report = AnalysisManager.processWithTimer(program, false, 60);
+//		String report = AnalysisManager.processForShortReport(program);
 //        System.out.println(report);
         mapDriver.withInput(new LongWritable(), value)
                 .withOutput(projectID, new Text(report)) 
