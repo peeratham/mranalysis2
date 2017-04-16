@@ -19,7 +19,6 @@ import org.junit.Test;
 import AST.Program;
 
 
-
 public class TestNewAnalysisMapper {
 	MapDriver<Object, Text, LongWritable, Text> mapDriver;
 	private String[] lines;
@@ -28,7 +27,7 @@ public class TestNewAnalysisMapper {
 
     @Before
     public void setup() throws IOException {
-    	NewAnalysisMapper mapper = new NewAnalysisMapper();
+    	AnalysisMapper mapper = new AnalysisMapper();
         mapDriver = MapDriver.newMapDriver(mapper);
         jsonParser = new JSONParser();
     }

@@ -7,6 +7,10 @@
 	<name>mranalysis2</name>
 	<description>mapreduce analysis for blocks</description>
 
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+
 	<repositories>
 		<repository>
 			<id>in-project</id>
